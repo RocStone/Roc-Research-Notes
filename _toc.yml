@@ -1,0 +1,11 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: The Elements of Statistical Learning
+    chapters:
+    - file: ele/overview
+    - file: ele/c1
+    - file: ele/c2-jupyter.ipynb
