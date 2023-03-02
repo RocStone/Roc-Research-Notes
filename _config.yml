@@ -39,6 +39,7 @@ sphinx:
     - amsmath
     - dollarmath
     - html_image
+    - colon_fence
 
 
 # myst_dmath_double_inline: true

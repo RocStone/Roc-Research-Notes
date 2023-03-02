@@ -495,8 +495,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#least-squares">
-     Least Squares
+    <a class="reference internal nav-link" href="#linear-models-and-least-squares">
+     Linear Models and Least Squares
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -510,6 +510,45 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#statistical-decision-theory">
    Statistical Decision Theory
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-methods-in-high-dimensions">
+   Local Methods in High Dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-models-supervised-learning-and-function-approximation">
+   Statistical Models, Supervised Learning and Function Approximation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-models">
+     Statistical Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     Supervised Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-approximation">
+     Function Approximation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structured-regression-models">
+   Structured Regression Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difficulty-of-the-problem">
+     Difficulty of the Problem
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -528,8 +567,8 @@ title="Print to PDF"
 </section>
 <section id="two-simple-approaches-to-prediction">
 <h2>Two Simple Approaches to Prediction<a class="headerlink" href="#two-simple-approaches-to-prediction" title="Permalink to this headline">#</a></h2>
-<section id="least-squares">
-<h3>Least Squares<a class="headerlink" href="#least-squares" title="Permalink to this headline">#</a></h3>
+<section id="linear-models-and-least-squares">
+<h3>Linear Models and Least Squares<a class="headerlink" href="#linear-models-and-least-squares" title="Permalink to this headline">#</a></h3>
 <p>Formula:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -651,6 +690,11 @@ p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\f
 <img alt="../_images/ba61b169372e72c73d0f2335f97a020643e48b452d7a38f6be2e0c4c5a79cd4b.png" src="../_images/ba61b169372e72c73d0f2335f97a020643e48b452d7a38f6be2e0c4c5a79cd4b.png" />
 </div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Bivariate normal distribution is a joint distribution of two random variables.</p>
+<p>Mixture model is a probability distribution that is a linear combination of other probability distributions. Each data in randomly generated from one of the components in the mixture model.</p>
+</div>
 </section>
 <section id="k-nearest-neighbors">
 <h3>K Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this headline">#</a></h3>
@@ -673,8 +717,8 @@ p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\f
 <h2>Statistical Decision Theory<a class="headerlink" href="#statistical-decision-theory" title="Permalink to this headline">#</a></h2>
 <p>The statistical decision theory is trying to choose a decision rule that minimizes a loss function. In another word, after we have a loss function, the theory researchs how to minimize it.</p>
 <p>Firstly, the book introduces the expected prediction error (EPE). The first loss function is the mean square loss. After some derivation, we know the way to minimize this loss function is set the model as <span class="math notranslate nohighlight">\(f(x)=E(Y|X)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6acb549f-6da7-46d2-892f-1725ebf37caf">
-<span class="eqno">(1)<a class="headerlink" href="#equation-6acb549f-6da7-46d2-892f-1725ebf37caf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-466124bb-dc83-4ad8-8955-c96feef1edab">
+<span class="eqno">(1)<a class="headerlink" href="#equation-466124bb-dc83-4ad8-8955-c96feef1edab" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(Y-f(x)^2)  \\
 &amp;=\int[y-f(x)]^2 P(dx,dy) \\
 &amp;=E_XE_{Y|X}([Y-f(X)]^2|X) \\
@@ -682,8 +726,8 @@ EPE(f)&amp;=E(Y-f(x)^2)  \\
 \Rightarrow  f(x) &amp; = E(Y|X) \\
 \end{align}\]</div>
 <p>However, we can also use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, in this case</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b599f3a8-ae02-44ea-90a9-f977ae95648c">
-<span class="eqno">(2)<a class="headerlink" href="#equation-b599f3a8-ae02-44ea-90a9-f977ae95648c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fea8c2cf-d8ff-4e18-943f-da71917e1174">
+<span class="eqno">(2)<a class="headerlink" href="#equation-fea8c2cf-d8ff-4e18-943f-da71917e1174" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(|Y-f(x)|)  \\
 \Rightarrow  f(x) &amp; = \mathrm{median}(Y|X) \\
 \end{align}\]</div>
@@ -712,11 +756,60 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
 {\hat{G}}(x)={\arg\min}_{g\in{\mathcal{G}}}[1-{\mathrm{Pr}}(g|X=x)]=\max_g P(g|X=x)
 \]</div>
 </p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For regression, mean square loss function enoucrage us to find the expected value of <span class="math notranslate nohighlight">\(Y|X\)</span>.</p>
+<p>L1 loss encourages us to find the median of <span class="math notranslate nohighlight">\(Y|X\)</span>.</p>
+<p>For classification, Bayes classifier encourages us to find the class with the highest conditional probability.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The classifier always assign the label with the highest conditional probability is called the <em>Bayes classifier</em>. The error rate of Bayes classifier is the <em>Bayes rate</em>.</p>
 </div>
 <p>As for KNN, we can think it relax the highest conditional probability to the marjotity vote in the neighborhood. In another word, the conditional probability is estimated by the proportion of the labels in the neighborhood.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When <span class="math notranslate nohighlight">\(K\rightarrow\infty\)</span> and <span class="math notranslate nohighlight">\(N\rightarrow\infty\)</span>, the neighboorhood of a data is compact and the proportion of the labels in the neighborhood is the same as the conditional probability. In this case, KNN is the same as Bayes classifier. But high-dimensions breaks down this intuition and the phenomenon is called <em>curse of dimensionality</em>.</p>
+</div>
+</section>
+<section id="local-methods-in-high-dimensions">
+<h2>Local Methods in High Dimensions<a class="headerlink" href="#local-methods-in-high-dimensions" title="Permalink to this headline">#</a></h2>
+<p>In this section, the book introduces the curse of dimensionality. It provides some examples and figures to illustrate the phenomenon. Also, it uses the bias-variance decomposition to explain the phenomenon. However, the derivation is not very clear.</p>
+<p>Also, I did not find the explaination of local methods. In my understanding, it is trying to say that KNN is based on the local neighborhood of a data. Thus, KNN is the refered local method. And inded, this subsection discusses why KNN performs badly on high dimension. Such conclusion can be generalized to other methods based on the local neighborhood.</p>
+<p><strong>By the way, the local methods assumme the <span class="math notranslate nohighlight">\(f(x)\)</span> is locally constant, i.e., when we have many data <span class="math notranslate nohighlight">\(\{x_j\}\)</span> close to <span class="math notranslate nohighlight">\(x_i\)</span> which we trying to predict, the <span class="math notranslate nohighlight">\(f(x)\)</span> does not change much. Thus, we can use the average of <span class="math notranslate nohighlight">\(f(x_j)=y_j,j\in N(i)\)</span> produce <span class="math notranslate nohighlight">\(\hat{f}(x_i)\)</span></strong>.</p>
+</section>
+<section id="statistical-models-supervised-learning-and-function-approximation">
+<h2>Statistical Models, Supervised Learning and Function Approximation<a class="headerlink" href="#statistical-models-supervised-learning-and-function-approximation" title="Permalink to this headline">#</a></h2>
+<section id="statistical-models">
+<h3>Statistical Models<a class="headerlink" href="#statistical-models" title="Permalink to this headline">#</a></h3>
+<p>According to chatgpt, statistical models are the simplified description of real-world relationship between variables. It trying to use mathmatical formula to represent the relationship.</p>
+</section>
+<section id="supervised-learning">
+<h3>Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">#</a></h3>
+<p>Supvervised learning is exploiting labels/reponse as the teacher to learn your statistical model.</p>
+</section>
+<section id="function-approximation">
+<h3>Function Approximation<a class="headerlink" href="#function-approximation" title="Permalink to this headline">#</a></h3>
+<p>This part is pretty close the statistical models section by my understanding. The function describes the relationship between input and output is same as the statistical model as far as I concern. When the function is complex, i.e., not linear or described by a Gaussian distribution, we can think about using an additive model consist of some basis function to approximate it. Then we can learn this function with choosen loss function.</p>
+<p>I did not get any useful information in this subsections at all.</p>
+</section>
+</section>
+<section id="structured-regression-models">
+<h2>Structured Regression Models<a class="headerlink" href="#structured-regression-models" title="Permalink to this headline">#</a></h2>
+<p>KNN not only performs bad in high dimension, but also underperformed by structured models when they more efficiently use data.</p>
+<p>At here, my understanding is the structured models are the models that can exploit the structure of the data.</p>
+<section id="difficulty-of-the-problem">
+<h3>Difficulty of the Problem<a class="headerlink" href="#difficulty-of-the-problem" title="Permalink to this headline">#</a></h3>
+<p>When we minimize the RSS loss function, there are actually infinite solutions. <span class="math notranslate nohighlight">\(RSS(f)=\sum_{i=}^N(y_i-f(x_i))^2.\)</span> In order to restrict the eligible solutions to RSS, we have to consider the test data. In other words, we want to find a function that can minimize the RSS on the training data and testing data, which natually limited the solutions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>At the end of this subsection, the author gives an interesting conclusion</p>
+<blockquote>
+<div><p>Any method that attempts to produce locally varying functions in small isotropic neighborhoods will run into problems in high dimensions—again the curse of dimensionality. And conversely, all methods that overcome the dimensionality problems have an associated and often implicit or adaptive metric for measuring neighborhoods, which basically does not allow the neighborhood to be simultaneously small in all directions.</p>
+</div></blockquote>
+<p>However, I did not get how to find a neighborhood measurement that does not allow the neighborhood to be small in all directions?</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -782,8 +875,8 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#least-squares">
-     Least Squares
+    <a class="reference internal nav-link" href="#linear-models-and-least-squares">
+     Linear Models and Least Squares
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -797,6 +890,45 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
   <a class="reference internal nav-link" href="#statistical-decision-theory">
    Statistical Decision Theory
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-methods-in-high-dimensions">
+   Local Methods in High Dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-models-supervised-learning-and-function-approximation">
+   Statistical Models, Supervised Learning and Function Approximation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-models">
+     Statistical Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     Supervised Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-approximation">
+     Function Approximation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structured-regression-models">
+   Structured Regression Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difficulty-of-the-problem">
+     Difficulty of the Problem
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
