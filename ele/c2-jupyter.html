@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>C2-Overview of Supervised Learning &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ele/c2-jupyter';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="C1-Introduction" href="c1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.jpg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="c1.html">
+                        C1-Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        C2-Overview of Supervised Learning
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="c1.html">
+                        C1-Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        C2-Overview of Supervised Learning
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.jpg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    About this book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Elements of Statistical Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="c1.html">C1-Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">C2-Overview of Supervised Learning</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fele/c2-jupyter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/ele/c2-jupyter.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>C2-Overview of Supervised Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-types-and-terminology">
+   Variable Types and Terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-simple-approaches-to-prediction">
+   Two Simple Approaches to Prediction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-models-and-least-squares">
+     Linear Models and Least Squares
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-nearest-neighbors">
+     K Nearest Neighbors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-decision-theory">
+   Statistical Decision Theory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-methods-in-high-dimensions">
+   Local Methods in High Dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-models-supervised-learning-and-function-approximation">
+   Statistical Models, Supervised Learning and Function Approximation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-models">
+     Statistical Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     Supervised Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-approximation">
+     Function Approximation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structured-regression-models">
+   Structured Regression Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difficulty-of-the-problem">
+     Difficulty of the Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <section class="tex2jax_ignore mathjax_ignore" id="c2-overview-of-supervised-learning">
+<h1>C2-Overview of Supervised Learning<a class="headerlink" href="#c2-overview-of-supervised-learning" title="Permalink to this headline">#</a></h1>
+<section id="variable-types-and-terminology">
+<h2>Variable Types and Terminology<a class="headerlink" href="#variable-types-and-terminology" title="Permalink to this headline">#</a></h2>
+<p>In this section, the authors introduce a number of variables that are frequently used in machine learning fields. The definition is very clear and is very important for beginers.</p>
+</section>
+<section id="two-simple-approaches-to-prediction">
+<h2>Two Simple Approaches to Prediction<a class="headerlink" href="#two-simple-approaches-to-prediction" title="Permalink to this headline">#</a></h2>
+<section id="linear-models-and-least-squares">
+<h3>Linear Models and Least Squares<a class="headerlink" href="#linear-models-and-least-squares" title="Permalink to this headline">#</a></h3>
+<p>Formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y}=\hat{\beta}_{0}+\sum_{j=1}^{p}X_{j}\hat{\beta}_{j}=X^T{\beta}. 
+\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">Fun</span> <span class="pre">fact</span></code>: <span class="math notranslate nohighlight">\((X,\hat{Y})\)</span> represents a hyperplane, which means if <span class="math notranslate nohighlight">\((X,Y)\)</span> is not close to a hyperplane, then the prediction will be very inaccurate.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Assumption</span></code>: the relationship between the input and output is linear. In another word, the function <span class="math notranslate nohighlight">\(f\)</span> of <span class="math notranslate nohighlight">\(y=f(x)\)</span> is a hyperplane.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Pros</span></code>: The number of learnable parameters is small, which is equal to the 1 + number of features. So the required number of data points to train the model is small. And easy to explain the prediction.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Cons</span></code>: The relationship between the input and output maybe non-linear.</p>
+<p><code class="docutils literal notranslate"><span class="pre">When</span> <span class="pre">to</span> <span class="pre">use</span></code>: We you have a good prior that the relationship between the input and output is linear.</p>
+<p><code class="docutils literal notranslate"><span class="pre">How</span> <span class="pre">to</span> <span class="pre">compute</span> <span class="pre">the</span> <span class="pre">parameter</span></code> <span class="math notranslate nohighlight">\(\beta\)</span>:</p>
+<ol class="arabic simple">
+<li><p>We can build a loss function with least squares, i.e., <div class="math notranslate nohighlight">
+\[RSS(\beta)=\sum_{i=1}^N(y_i-x_i^T\beta)^2=(y-\textbf{X}\beta)^T(y-\textbf{Y}\beta),\]</div>
+ where <span class="math notranslate nohighlight">\(\textbf{X}\)</span> is a <span class="math notranslate nohighlight">\(N\times p\)</span> matrix with each row as an input vector and <span class="math notranslate nohighlight">\(\textbf{y}\)</span> is a <span class="math notranslate nohighlight">\(N\)</span>-vector.</p></li>
+<li><p>We try to find a good <span class="math notranslate nohighlight">\(\beta\)</span> to minimize the loss function <span class="math notranslate nohighlight">\(RSS(\beta)\)</span>. Since this is a quadratic function, we know the minimum value can be get when the derivative of this function w.r.t <span class="math notranslate nohighlight">\(\beta\)</span> is zero, i.e., <span class="math notranslate nohighlight">\({\bf X}^{T}({\bf y}-{\bf X}\beta)=0. \)</span>
+if <span class="math notranslate nohighlight">\(X^TX\)</span> is nonsingular, then we have the close-form solution <div class="math notranslate nohighlight">
+\[\beta=({\bf X}^{T}{\bf X})^{-1}{\bf X}^{T}{\bf y}, \]</div>
+</p></li>
+</ol>
+<p>The book provides two scenarios.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">1</span></code>: The training data in each class were generated from bivariate Gaussian distributions with uncorrelated components and different means.</p>
+<p><code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">understanding</span> <span class="pre">is</span></code>: each data has two features and there are at least two classes in dataset. The two features are generated from a bivariate Gaussian distribution. These two features are uncorrelated thus the componets of these bivariate distributions are uncorrelated. The means of these bivariate distributions for each class are different. Following is the formula of bivariate normal distribution and the code write by chatgpt from above description. You can see the bivariate normal distribution describes the joint distribution of two random variables.</p>
+<div class="math notranslate nohighlight">
+\[
+p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\frac{1}{2(1-\rho^{2})}}\left({\frac{(x-\mu_{x})^{2}}{\sigma_{x}^{2}}}+{\frac{(y-\mu_{y})^{2}}{\sigma_{y}^{2}}}-{\frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}}}\right)\right] \]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set the seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Define the number of data points to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Define the means for each Gaussian distribution</span>
+<span class="n">mean1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">mean2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Define the covariance matrix for each Gaussian distribution</span>
+<span class="n">cov1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+<span class="n">cov2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1"># Generate the data points from the bivariate Gaussian distributions</span>
+<span class="c1"># data1 for class1 and data2 for class2</span>
+<span class="c1"># the joint distribution requires the mean in d-dimensional space where d is the number of features, and the covariance matrix which is a d x d matrix</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span> <span class="n">cov1</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean2</span><span class="p">,</span> <span class="n">cov2</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Plot the generated data points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a001c9ee9b1266d78b12bcd775013f792c2e32a60446f4ea152d9150c6e82e58.png" src="../_images/a001c9ee9b1266d78b12bcd775013f792c2e32a60446f4ea152d9150c6e82e58.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Scenario2</span></code>: The training data in each class came from a mixture of 10 low-variance Gaussian distributions, with individual means themselves distributed as Gaussian.</p>
+<p><code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">understanding</span> <span class="pre">is</span></code>: Firstly and most importantly, I just realized that the mixture model means the data is generated from one randomly-choosed components from the mixture model. However, this sentence did not imply the that each class is generated from the same mixture model or different one. Also, the number of feature is ambiguous in this sentence. If the feature number is two, then each distribution in the mixture model is bivariate Gaussian distribution. Finnaly, for these 10 Gaussian distributions, their means are sampled from a Gaussian distribution.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y}=\hat{\beta}_{0}+\sum_{j=1}^{p}X_{j}\hat{\beta}_{j}=X^T{\beta}. 
+\]</div>
+<p>In section 2.3.3, it provides the details of generating data in sceario2. Again, the following code is written by chatgpt.</p>
+<div class="cell tag_parameters tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Generate means for BLUE class</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">blue_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Generate means for ORANGE class</span>
+<span class="n">orange_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Generate BLUE class data</span>
+<span class="n">blue_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">blue_means</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">blue_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">blue_data</span><span class="p">,</span> <span class="n">sample</span><span class="p">])</span>
+
+<span class="c1"># Generate ORANGE class data</span>
+<span class="n">orange_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">orange_means</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">orange_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">orange_data</span><span class="p">,</span> <span class="n">sample</span><span class="p">])</span>
+
+<span class="c1"># Plot the data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">blue_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">blue_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;class1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">orange_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">orange_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;class2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/ba61b169372e72c73d0f2335f97a020643e48b452d7a38f6be2e0c4c5a79cd4b.png" src="../_images/ba61b169372e72c73d0f2335f97a020643e48b452d7a38f6be2e0c4c5a79cd4b.png" />
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Bivariate normal distribution is a joint distribution of two random variables.</p>
+<p>Mixture model is a probability distribution that is a linear combination of other probability distributions. Each data in randomly generated from one of the components in the mixture model.</p>
+</div>
+</section>
+<section id="k-nearest-neighbors">
+<h3>K Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Assumption</span></code>: Not mentioned in the book, but in fact it assume the same-class data are distributed closely in Euclidean space which might not be true, e.g., a grayscale cat is far way from colored cat in Euclidean space but they are from the same class.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Pros</span></code>: Potential low bias.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Cons</span></code>: Potential high variance.</p>
+<p><code class="docutils literal notranslate"><span class="pre">When</span> <span class="pre">to</span> <span class="pre">use</span></code>: small dataset and low-dimensional dataset.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Fun</span> <span class="pre">fact</span></code>: KNN can condiered as assigning 0-1 weights to each data accroding to the distance. Kernel methods can be considered as soft method with smoothly assign weights according to the distance.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Fun</span> <span class="pre">conclusion</span></code>: The book says: linear models fit to a basis expansion of the original inputs allow arbitrarily complex models. According to chatgpt, the meaning of basis expansion is that we can use polynomial basis to expand the original input. For example, if the original input is <span class="math notranslate nohighlight">\(x\)</span>, then we can use <span class="math notranslate nohighlight">\(x^2\)</span> as the new input. Then we can use linear model to fit the new input. More generally, we have <div class="math notranslate nohighlight">
+\[y = w_0 + w_1 f_1(x) + w_2 f_2(x) + \cdots + w_n f_n(x),\]</div>
+ where <span class="math notranslate nohighlight">\(f_i(x)\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th basis function which could be a non-linear function, e.g., <span class="math notranslate nohighlight">\(f_2(x)=x^2\)</span> and <span class="math notranslate nohighlight">\(f_3(x)=x^3\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fun</span> <span class="pre">conclusion2</span></code>: Projection pursuit and neural network models consist of sums of non-linearly transformed linear models. The projection pursuit is <div class="math notranslate nohighlight">
+\[y = \sum_{j=1}^J g_j(\mathbf{w}_j^T \mathbf{x}),\]</div>
+ where <span class="math notranslate nohighlight">\(g_j\)</span> is a non-linear function and <span class="math notranslate nohighlight">\(\mathbf{w}_j\)</span> is a weight vector. In another word, projection pursuit model can be considered as nonlinearly transform a bunch of linear models and sum the results. The neural network model is similar, <div class="math notranslate nohighlight">
+\[y = \sum_{j=1}^J w_j^{(2)} g\left(\sum_{i=1}^I w_{ij}^{(1)} x_i + w_{j0}^{(1)}\right) + w_0^{(2)},\]</div>
+ where <span class="math notranslate nohighlight">\(y\)</span> is the output, <span class="math notranslate nohighlight">\(x_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th input feature, <span class="math notranslate nohighlight">\(w_{ij}^{(1)}\)</span> is the weight for the connection between the <span class="math notranslate nohighlight">\(i\)</span>-th input feature and the <span class="math notranslate nohighlight">\(j\)</span>-th hidden unit, <span class="math notranslate nohighlight">\(w_{j0}^{(1)}\)</span> is the bias term for the <span class="math notranslate nohighlight">\(j\)</span>-th hidden unit, <span class="math notranslate nohighlight">\(w_j^{(2)}\)</span> is the weight for the connection between the <span class="math notranslate nohighlight">\(j\)</span>-th hidden unit and the output, <span class="math notranslate nohighlight">\(g\)</span> is a non-linear activation function applied to the sum of inputs to the <span class="math notranslate nohighlight">\(j\)</span>-th hidden unit.</p>
+</section>
+</section>
+<section id="statistical-decision-theory">
+<h2>Statistical Decision Theory<a class="headerlink" href="#statistical-decision-theory" title="Permalink to this headline">#</a></h2>
+<p>The statistical decision theory is trying to choose a decision rule that minimizes a loss function. In another word, after we have a loss function, the theory researchs how to minimize it.</p>
+<p>Firstly, the book introduces the expected prediction error (EPE). The first loss function is the mean square loss. After some derivation, we know the way to minimize this loss function is set the model as <span class="math notranslate nohighlight">\(f(x)=E(Y|X)\)</span>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-466124bb-dc83-4ad8-8955-c96feef1edab">
+<span class="eqno">(1)<a class="headerlink" href="#equation-466124bb-dc83-4ad8-8955-c96feef1edab" title="Permalink to this equation">#</a></span>\[\begin{align}
+EPE(f)&amp;=E(Y-f(x)^2)  \\
+&amp;=\int[y-f(x)]^2 P(dx,dy) \\
+&amp;=E_XE_{Y|X}([Y-f(X)]^2|X) \\
+\Rightarrow  f(x) &amp; = \arg\min_c E_{Y|X}([Y-c]^2|X) \\
+\Rightarrow  f(x) &amp; = E(Y|X) \\
+\end{align}\]</div>
+<p>However, we can also use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, in this case</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fea8c2cf-d8ff-4e18-943f-da71917e1174">
+<span class="eqno">(2)<a class="headerlink" href="#equation-fea8c2cf-d8ff-4e18-943f-da71917e1174" title="Permalink to this equation">#</a></span>\[\begin{align}
+EPE(f)&amp;=E(|Y-f(x)|)  \\
+\Rightarrow  f(x) &amp; = \mathrm{median}(Y|X) \\
+\end{align}\]</div>
+<p>This is counterintuitive yet right, i.e., when you use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, the optimal prediction is the median of the conditional distribution of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(X\)</span>. The reason is that the median is the value that minimizes the sum of absolute deviations from the median.</p>
+<p>The following code is an exmaple of the comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">median</span>
+<span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">median</span><span class="p">)</span><span class="o">.</span><span class="fm">__abs__</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span><span class="o">.</span><span class="fm">__abs__</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(21.0, 22.857142857142858)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For categorical prediction, we usually exploit 0-1 loss function. Omit all of the derivation, we know the optimal prediction is predict the data as the class with the highest conditional probability.
+<div class="math notranslate nohighlight">
+\[
+{\hat{G}}(x)={\arg\min}_{g\in{\mathcal{G}}}[1-{\mathrm{Pr}}(g|X=x)]=\max_g P(g|X=x)
+\]</div>
+</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For regression, mean square loss function enoucrage us to find the expected value of <span class="math notranslate nohighlight">\(Y|X\)</span>.</p>
+<p>L1 loss encourages us to find the median of <span class="math notranslate nohighlight">\(Y|X\)</span>.</p>
+<p>For classification, Bayes classifier encourages us to find the class with the highest conditional probability.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The classifier always assign the label with the highest conditional probability is called the <em>Bayes classifier</em>. The error rate of Bayes classifier is the <em>Bayes rate</em>.</p>
+</div>
+<p>As for KNN, we can think it relax the highest conditional probability to the marjotity vote in the neighborhood. In another word, the conditional probability is estimated by the proportion of the labels in the neighborhood.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When <span class="math notranslate nohighlight">\(K\rightarrow\infty\)</span> and <span class="math notranslate nohighlight">\(N\rightarrow\infty\)</span>, the neighboorhood of a data is compact and the proportion of the labels in the neighborhood is the same as the conditional probability. In this case, KNN is the same as Bayes classifier. But high-dimensions breaks down this intuition and the phenomenon is called <em>curse of dimensionality</em>.</p>
+</div>
+</section>
+<section id="local-methods-in-high-dimensions">
+<h2>Local Methods in High Dimensions<a class="headerlink" href="#local-methods-in-high-dimensions" title="Permalink to this headline">#</a></h2>
+<p>In this section, the book introduces the curse of dimensionality. It provides some examples and figures to illustrate the phenomenon. Also, it uses the bias-variance decomposition to explain the phenomenon. However, the derivation is not very clear.</p>
+<p>Also, I did not find the explaination of local methods. In my understanding, it is trying to say that KNN is based on the local neighborhood of a data. Thus, KNN is the refered local method. And inded, this subsection discusses why KNN performs badly on high dimension. Such conclusion can be generalized to other methods based on the local neighborhood.</p>
+<p><strong>By the way, the local methods assumme the <span class="math notranslate nohighlight">\(f(x)\)</span> is locally constant, i.e., when we have many data <span class="math notranslate nohighlight">\(\{x_j\}\)</span> close to <span class="math notranslate nohighlight">\(x_i\)</span> which we trying to predict, the <span class="math notranslate nohighlight">\(f(x)\)</span> does not change much. Thus, we can use the average of <span class="math notranslate nohighlight">\(f(x_j)=y_j,j\in N(i)\)</span> produce <span class="math notranslate nohighlight">\(\hat{f}(x_i)\)</span></strong>.</p>
+</section>
+<section id="statistical-models-supervised-learning-and-function-approximation">
+<h2>Statistical Models, Supervised Learning and Function Approximation<a class="headerlink" href="#statistical-models-supervised-learning-and-function-approximation" title="Permalink to this headline">#</a></h2>
+<section id="statistical-models">
+<h3>Statistical Models<a class="headerlink" href="#statistical-models" title="Permalink to this headline">#</a></h3>
+<p>According to chatgpt, statistical models are the simplified description of real-world relationship between variables. It trying to use mathmatical formula to represent the relationship.</p>
+</section>
+<section id="supervised-learning">
+<h3>Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">#</a></h3>
+<p>Supvervised learning is exploiting labels/reponse as the teacher to learn your statistical model.</p>
+</section>
+<section id="function-approximation">
+<h3>Function Approximation<a class="headerlink" href="#function-approximation" title="Permalink to this headline">#</a></h3>
+<p>This part is pretty close the statistical models section by my understanding. The function describes the relationship between input and output is same as the statistical model as far as I concern. When the function is complex, i.e., not linear or described by a Gaussian distribution, we can think about using an additive model consist of some basis function to approximate it. Then we can learn this function with choosen loss function.</p>
+<p>I did not get any useful information in this subsections at all.</p>
+</section>
+</section>
+<section id="structured-regression-models">
+<h2>Structured Regression Models<a class="headerlink" href="#structured-regression-models" title="Permalink to this headline">#</a></h2>
+<p>KNN not only performs bad in high dimension, but also underperformed by structured models when they more efficiently use data.</p>
+<p>At here, my understanding is the structured models are the models that can exploit the structure of the data.</p>
+<section id="difficulty-of-the-problem">
+<h3>Difficulty of the Problem<a class="headerlink" href="#difficulty-of-the-problem" title="Permalink to this headline">#</a></h3>
+<p>When we minimize the RSS loss function, there are actually infinite solutions. <span class="math notranslate nohighlight">\(RSS(f)=\sum_{i=}^N(y_i-f(x_i))^2.\)</span> In order to restrict the eligible solutions to RSS, we have to consider the test data. In other words, we want to find a function that can minimize the RSS on the training data and testing data, which natually limited the solutions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>At the end of this subsection, the author gives an interesting conclusion</p>
+<blockquote>
+<div><p>Any method that attempts to produce locally varying functions in small isotropic neighborhoods will run into problems in high dimensions—again the curse of dimensionality. And conversely, all methods that overcome the dimensionality problems have an associated and often implicit or adaptive metric for measuring neighborhoods, which basically does not allow the neighborhood to be simultaneously small in all directions.</p>
+</div></blockquote>
+<p>However, I did not get how to find a neighborhood measurement that does not allow the neighborhood to be small in all directions?</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ele"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="c1.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">C1-Introduction</p>
+      </div>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-types-and-terminology">
+   Variable Types and Terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-simple-approaches-to-prediction">
+   Two Simple Approaches to Prediction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-models-and-least-squares">
+     Linear Models and Least Squares
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-nearest-neighbors">
+     K Nearest Neighbors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-decision-theory">
+   Statistical Decision Theory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-methods-in-high-dimensions">
+   Local Methods in High Dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-models-supervised-learning-and-function-approximation">
+   Statistical Models, Supervised Learning and Function Approximation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-models">
+     Statistical Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     Supervised Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function-approximation">
+     Function Approximation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structured-regression-models">
+   Structured Regression Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difficulty-of-the-problem">
+     Difficulty of the Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>
