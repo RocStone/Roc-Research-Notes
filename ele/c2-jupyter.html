@@ -550,6 +550,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classes-of-restricted-estimators">
+   Classes of Restricted Estimators
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -717,8 +722,8 @@ p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\f
 <h2>Statistical Decision Theory<a class="headerlink" href="#statistical-decision-theory" title="Permalink to this headline">#</a></h2>
 <p>The statistical decision theory is trying to choose a decision rule that minimizes a loss function. In another word, after we have a loss function, the theory researchs how to minimize it.</p>
 <p>Firstly, the book introduces the expected prediction error (EPE). The first loss function is the mean square loss. After some derivation, we know the way to minimize this loss function is set the model as <span class="math notranslate nohighlight">\(f(x)=E(Y|X)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-466124bb-dc83-4ad8-8955-c96feef1edab">
-<span class="eqno">(1)<a class="headerlink" href="#equation-466124bb-dc83-4ad8-8955-c96feef1edab" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a989e03c-de8e-408e-91aa-1884d5cb7f2e">
+<span class="eqno">(1)<a class="headerlink" href="#equation-a989e03c-de8e-408e-91aa-1884d5cb7f2e" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(Y-f(x)^2)  \\
 &amp;=\int[y-f(x)]^2 P(dx,dy) \\
 &amp;=E_XE_{Y|X}([Y-f(X)]^2|X) \\
@@ -726,8 +731,8 @@ EPE(f)&amp;=E(Y-f(x)^2)  \\
 \Rightarrow  f(x) &amp; = E(Y|X) \\
 \end{align}\]</div>
 <p>However, we can also use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, in this case</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fea8c2cf-d8ff-4e18-943f-da71917e1174">
-<span class="eqno">(2)<a class="headerlink" href="#equation-fea8c2cf-d8ff-4e18-943f-da71917e1174" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7bfb5674-60f6-4ad8-8e00-4a08465f4651">
+<span class="eqno">(2)<a class="headerlink" href="#equation-7bfb5674-60f6-4ad8-8e00-4a08465f4651" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(|Y-f(x)|)  \\
 \Rightarrow  f(x) &amp; = \mathrm{median}(Y|X) \\
 \end{align}\]</div>
@@ -810,6 +815,9 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
 <p>However, I did not get how to find a neighborhood measurement that does not allow the neighborhood to be small in all directions?</p>
 </div>
 </section>
+</section>
+<section id="classes-of-restricted-estimators">
+<h2>Classes of Restricted Estimators<a class="headerlink" href="#classes-of-restricted-estimators" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -929,6 +937,11 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classes-of-restricted-estimators">
+   Classes of Restricted Estimators
+  </a>
  </li>
 </ul>
 
