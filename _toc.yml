@@ -9,3 +9,7 @@ parts:
     - file: ele/overview
     - file: ele/c1
     - file: ele/c2-jupyter.ipynb
+  - caption: MIT 18.065 Matrix Methods In Data Analysis, Signal Processing, And Machine Learning
+    chapters:
+    - file: mit/overview
+    - file: mit/lecture1-the coulumn space of a contains all vectors Ax.ipynb
