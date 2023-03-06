@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ele/c2-jupyter';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="overview" href="../mit/overview.html" />
+    <link rel="next" title="L0: Overview" href="../mit/overview.html" />
     <link rel="prev" title="C1-Introduction" href="c1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="None">
@@ -139,7 +139,7 @@ const thebe_selector_output = ".output, .cell_output"
         
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="overview.html">
-                        Overview
+                        C0-Overview
                       </a>
                     </li>
                 
@@ -160,17 +160,32 @@ const thebe_selector_output = ".output, .cell_output"
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../mit/overview.html">
-                        overview
+                        L0: Overview
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../mit/lecture1-the%20coulumn%20space%20of%20a%20contains%20all%20vectors%20Ax.html">
-                        L1: The coulumn space of A contains all vectors Ax
+                      <a class="nav-link nav-internal" href="../mit/lecture1.html">
+                        L1: The coulumn space of A
                       </a>
                     </li>
                 
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../mit/lecture2.html">
+                        L2: Multiplying and Factoring
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
     </ul>
 </nav>
       </div>
@@ -243,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
         
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="overview.html">
-                        Overview
+                        C0-Overview
                       </a>
                     </li>
                 
@@ -264,17 +279,32 @@ const thebe_selector_output = ".output, .cell_output"
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../mit/overview.html">
-                        overview
+                        L0: Overview
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../mit/lecture1-the%20coulumn%20space%20of%20a%20contains%20all%20vectors%20Ax.html">
-                        L1: The coulumn space of A contains all vectors Ax
+                      <a class="nav-link nav-internal" href="../mit/lecture1.html">
+                        L1: The coulumn space of A
                       </a>
                     </li>
                 
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../mit/lecture2.html">
+                        L2: Multiplying and Factoring
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
     </ul>
 </nav>
       </div>
@@ -345,16 +375,17 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Elements of Statistical Learning</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">C0-Overview</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="c1.html">C1-Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">C2-Overview of Supervised Learning</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">MIT 18.065 Matrix Methods In Data Analysis, Signal Processing, And Machine Learning</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MIT 18.065 Matrix Methods in ML</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mit/overview.html">overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mit/lecture1-the%20coulumn%20space%20of%20a%20contains%20all%20vectors%20Ax.html">L1: The coulumn space of A contains all vectors Ax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mit/overview.html">L0: Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mit/lecture1.html">L1: The coulumn space of A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mit/lecture2.html">L2: Multiplying and Factoring</a></li>
 </ul>
 
     </div>
@@ -653,8 +684,8 @@ if <span class="math notranslate nohighlight">\(X^TX\)</span> is nonsingular, th
 <p>The book provides two scenarios.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">1</span></code>: The training data in each class were generated from bivariate Gaussian distributions with uncorrelated components and different means.</p>
 <p><code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">understanding</span> <span class="pre">is</span></code>: each data has two features and there are at least two classes in dataset. The two features are generated from a bivariate Gaussian distribution. These two features are uncorrelated thus the componets of these bivariate distributions are uncorrelated. The means of these bivariate distributions for each class are different. Following is the formula of bivariate normal distribution and the code write by chatgpt from above description. You can see the bivariate normal distribution describes the joint distribution of two random variables.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60be8e36-8421-41c1-a2b6-a7bb7d444e3b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-60be8e36-8421-41c1-a2b6-a7bb7d444e3b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6c2134be-a721-42f1-8ac7-de56274ab743">
+<span class="eqno">(1)<a class="headerlink" href="#equation-6c2134be-a721-42f1-8ac7-de56274ab743" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(X=x,Y=y)&amp;={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\cdot\\
 &amp;\exp\left[-{\frac{1}{2(1-\rho^{2})}}\left({\frac{(x-\mu_{x})^{2}}{\sigma_{x}^{2}}}+{\frac{(y-\mu_{y})^{2}}{\sigma_{y}^{2}}}-{\frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}}}\right)\right] 
 \end{align}\]</div>
@@ -815,8 +846,8 @@ p(X=x,Y=y)&amp;={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\cdot\\
 <h2>Statistical Decision Theory<a class="headerlink" href="#statistical-decision-theory" title="Permalink to this headline">#</a></h2>
 <p>The statistical decision theory is trying to choose a decision rule that minimizes a loss function. In another word, after we have a loss function, the theory researchs how to minimize it.</p>
 <p>Firstly, the book introduces the expected prediction error (EPE). The first loss function is the mean square loss. After some derivation, we know the way to minimize this loss function is set the model as <span class="math notranslate nohighlight">\(f(x)=E(Y|X)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28a0a08c-218a-47cb-9013-0ff1d75c212f">
-<span class="eqno">(2)<a class="headerlink" href="#equation-28a0a08c-218a-47cb-9013-0ff1d75c212f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b437357a-2454-4c9f-81ee-e2525086d6a7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b437357a-2454-4c9f-81ee-e2525086d6a7" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(Y-f(x)^2)  \\
 &amp;=\int[y-f(x)]^2 P(dx,dy) \\
 &amp;=E_XE_{Y|X}([Y-f(X)]^2|X) \\
@@ -824,8 +855,8 @@ EPE(f)&amp;=E(Y-f(x)^2)  \\
 \Rightarrow  f(x) &amp; = E(Y|X) \\
 \end{align}\]</div>
 <p>However, we can also use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, in this case</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99015159-f4a2-406b-92fe-88a2f90a1867">
-<span class="eqno">(3)<a class="headerlink" href="#equation-99015159-f4a2-406b-92fe-88a2f90a1867" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8e4b03a6-1e6a-4956-98c4-77ad5ffa4a16">
+<span class="eqno">(3)<a class="headerlink" href="#equation-8e4b03a6-1e6a-4956-98c4-77ad5ffa4a16" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(|Y-f(x)|)  \\
 \Rightarrow  f(x) &amp; = \mathrm{median}(Y|X) \\
 \end{align}\]</div>
@@ -1026,7 +1057,7 @@ K_{k}(x,x_{0})=I(||x-x_{0}||\leq||x_{(k)}-x_{0}||),
   <a class='right-next' id="next-link" href="../mit/overview.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">overview</p>
+      <p class="prev-next-title">L0: Overview</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
