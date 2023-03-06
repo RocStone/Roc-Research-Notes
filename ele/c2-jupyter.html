@@ -62,6 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ele/c2-jupyter';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="overview" href="../mit/overview.html" />
     <link rel="prev" title="C1-Introduction" href="c1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="None">
@@ -156,6 +157,20 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../mit/overview.html">
+                        overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../mit/lecture1-the%20coulumn%20space%20of%20a%20contains%20all%20vectors%20Ax.html">
+                        L1: The coulumn space of A contains all vectors Ax
+                      </a>
+                    </li>
+                
     </ul>
 </nav>
       </div>
@@ -246,6 +261,20 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../mit/overview.html">
+                        overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../mit/lecture1-the%20coulumn%20space%20of%20a%20contains%20all%20vectors%20Ax.html">
+                        L1: The coulumn space of A contains all vectors Ax
+                      </a>
+                    </li>
+                
     </ul>
 </nav>
       </div>
@@ -321,6 +350,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="c1.html">C1-Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">C2-Overview of Supervised Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MIT 18.065 Matrix Methods In Data Analysis, Signal Processing, And Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mit/overview.html">overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mit/lecture1-the%20coulumn%20space%20of%20a%20contains%20all%20vectors%20Ax.html">L1: The coulumn space of A contains all vectors Ax</a></li>
 </ul>
 
     </div>
@@ -513,12 +547,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#local-methods-in-high-dimensions">
-   Local Methods in High Dimensions
+   2.5 Local Methods in High Dimensions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#statistical-models-supervised-learning-and-function-approximation">
-   Statistical Models, Supervised Learning and Function Approximation
+   2.6 Statistical Models, Supervised Learning and Function Approximation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -553,6 +587,28 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classes-of-restricted-estimators">
    Classes of Restricted Estimators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roughness-penalty-and-bayesian-methods">
+     2.8.1 Roughness Penalty and Bayesian Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kernel-methods-and-local-regression">
+     2.8.2 Kernel Methods and Local Regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basis-functions-and-dictionary-methods">
+   2.8.3 Basis Functions and Dictionary Methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-selection-and-the-biasvariance-tradeoff">
+   2.9 Model Selection and the Bias–Variance Tradeoff
   </a>
  </li>
 </ul>
@@ -597,9 +653,11 @@ if <span class="math notranslate nohighlight">\(X^TX\)</span> is nonsingular, th
 <p>The book provides two scenarios.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">1</span></code>: The training data in each class were generated from bivariate Gaussian distributions with uncorrelated components and different means.</p>
 <p><code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">understanding</span> <span class="pre">is</span></code>: each data has two features and there are at least two classes in dataset. The two features are generated from a bivariate Gaussian distribution. These two features are uncorrelated thus the componets of these bivariate distributions are uncorrelated. The means of these bivariate distributions for each class are different. Following is the formula of bivariate normal distribution and the code write by chatgpt from above description. You can see the bivariate normal distribution describes the joint distribution of two random variables.</p>
-<div class="math notranslate nohighlight">
-\[
-p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\frac{1}{2(1-\rho^{2})}}\left({\frac{(x-\mu_{x})^{2}}{\sigma_{x}^{2}}}+{\frac{(y-\mu_{y})^{2}}{\sigma_{y}^{2}}}-{\frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}}}\right)\right] \]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-60be8e36-8421-41c1-a2b6-a7bb7d444e3b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-60be8e36-8421-41c1-a2b6-a7bb7d444e3b" title="Permalink to this equation">#</a></span>\[\begin{align}
+p(X=x,Y=y)&amp;={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\cdot\\
+&amp;\exp\left[-{\frac{1}{2(1-\rho^{2})}}\left({\frac{(x-\mu_{x})^{2}}{\sigma_{x}^{2}}}+{\frac{(y-\mu_{y})^{2}}{\sigma_{y}^{2}}}-{\frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}}}\right)\right] 
+\end{align}\]</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -641,6 +699,24 @@ p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\f
 </details>
 <div class="cell_output docutils container">
 <img alt="../_images/a001c9ee9b1266d78b12bcd775013f792c2e32a60446f4ea152d9150c6e82e58.png" src="../_images/a001c9ee9b1266d78b12bcd775013f792c2e32a60446f4ea152d9150c6e82e58.png" />
+</div>
+</div>
+<p>This is the 3-D visualization of a bivariate normal distribution.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;./imgs/bivariate normal distribution.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2468165a7f357919843a8a30a936ade149434c1cdcfbe5f8d6ae1d1ea4d90149.png" src="../_images/2468165a7f357919843a8a30a936ade149434c1cdcfbe5f8d6ae1d1ea4d90149.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Scenario2</span></code>: The training data in each class came from a mixture of 10 low-variance Gaussian distributions, with individual means themselves distributed as Gaussian.</p>
@@ -700,6 +776,23 @@ p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\f
 <p>Bivariate normal distribution is a joint distribution of two random variables.</p>
 <p>Mixture model is a probability distribution that is a linear combination of other probability distributions. Each data in randomly generated from one of the components in the mixture model.</p>
 </div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;./imgs/bivariate normal distribution.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2468165a7f357919843a8a30a936ade149434c1cdcfbe5f8d6ae1d1ea4d90149.png" src="../_images/2468165a7f357919843a8a30a936ade149434c1cdcfbe5f8d6ae1d1ea4d90149.png" />
+</div>
+</div>
 </section>
 <section id="k-nearest-neighbors">
 <h3>K Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this headline">#</a></h3>
@@ -722,8 +815,8 @@ p(X=x,Y=y)={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\exp\left[-{\f
 <h2>Statistical Decision Theory<a class="headerlink" href="#statistical-decision-theory" title="Permalink to this headline">#</a></h2>
 <p>The statistical decision theory is trying to choose a decision rule that minimizes a loss function. In another word, after we have a loss function, the theory researchs how to minimize it.</p>
 <p>Firstly, the book introduces the expected prediction error (EPE). The first loss function is the mean square loss. After some derivation, we know the way to minimize this loss function is set the model as <span class="math notranslate nohighlight">\(f(x)=E(Y|X)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a989e03c-de8e-408e-91aa-1884d5cb7f2e">
-<span class="eqno">(1)<a class="headerlink" href="#equation-a989e03c-de8e-408e-91aa-1884d5cb7f2e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-28a0a08c-218a-47cb-9013-0ff1d75c212f">
+<span class="eqno">(2)<a class="headerlink" href="#equation-28a0a08c-218a-47cb-9013-0ff1d75c212f" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(Y-f(x)^2)  \\
 &amp;=\int[y-f(x)]^2 P(dx,dy) \\
 &amp;=E_XE_{Y|X}([Y-f(X)]^2|X) \\
@@ -731,8 +824,8 @@ EPE(f)&amp;=E(Y-f(x)^2)  \\
 \Rightarrow  f(x) &amp; = E(Y|X) \\
 \end{align}\]</div>
 <p>However, we can also use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, in this case</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7bfb5674-60f6-4ad8-8e00-4a08465f4651">
-<span class="eqno">(2)<a class="headerlink" href="#equation-7bfb5674-60f6-4ad8-8e00-4a08465f4651" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-99015159-f4a2-406b-92fe-88a2f90a1867">
+<span class="eqno">(3)<a class="headerlink" href="#equation-99015159-f4a2-406b-92fe-88a2f90a1867" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(|Y-f(x)|)  \\
 \Rightarrow  f(x) &amp; = \mathrm{median}(Y|X) \\
 \end{align}\]</div>
@@ -778,13 +871,13 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
 </div>
 </section>
 <section id="local-methods-in-high-dimensions">
-<h2>Local Methods in High Dimensions<a class="headerlink" href="#local-methods-in-high-dimensions" title="Permalink to this headline">#</a></h2>
+<h2>2.5 Local Methods in High Dimensions<a class="headerlink" href="#local-methods-in-high-dimensions" title="Permalink to this headline">#</a></h2>
 <p>In this section, the book introduces the curse of dimensionality. It provides some examples and figures to illustrate the phenomenon. Also, it uses the bias-variance decomposition to explain the phenomenon. However, the derivation is not very clear.</p>
 <p>Also, I did not find the explaination of local methods. In my understanding, it is trying to say that KNN is based on the local neighborhood of a data. Thus, KNN is the refered local method. And inded, this subsection discusses why KNN performs badly on high dimension. Such conclusion can be generalized to other methods based on the local neighborhood.</p>
 <p><strong>By the way, the local methods assumme the <span class="math notranslate nohighlight">\(f(x)\)</span> is locally constant, i.e., when we have many data <span class="math notranslate nohighlight">\(\{x_j\}\)</span> close to <span class="math notranslate nohighlight">\(x_i\)</span> which we trying to predict, the <span class="math notranslate nohighlight">\(f(x)\)</span> does not change much. Thus, we can use the average of <span class="math notranslate nohighlight">\(f(x_j)=y_j,j\in N(i)\)</span> produce <span class="math notranslate nohighlight">\(\hat{f}(x_i)\)</span></strong>.</p>
 </section>
 <section id="statistical-models-supervised-learning-and-function-approximation">
-<h2>Statistical Models, Supervised Learning and Function Approximation<a class="headerlink" href="#statistical-models-supervised-learning-and-function-approximation" title="Permalink to this headline">#</a></h2>
+<h2>2.6 Statistical Models, Supervised Learning and Function Approximation<a class="headerlink" href="#statistical-models-supervised-learning-and-function-approximation" title="Permalink to this headline">#</a></h2>
 <section id="statistical-models">
 <h3>Statistical Models<a class="headerlink" href="#statistical-models" title="Permalink to this headline">#</a></h3>
 <p>According to chatgpt, statistical models are the simplified description of real-world relationship between variables. It trying to use mathmatical formula to represent the relationship.</p>
@@ -796,6 +889,11 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
 <section id="function-approximation">
 <h3>Function Approximation<a class="headerlink" href="#function-approximation" title="Permalink to this headline">#</a></h3>
 <p>This part is pretty close the statistical models section by my understanding. The function describes the relationship between input and output is same as the statistical model as far as I concern. When the function is complex, i.e., not linear or described by a Gaussian distribution, we can think about using an additive model consist of some basis function to approximate it. Then we can learn this function with choosen loss function.</p>
+<p>The definition of additive model is <div class="math notranslate nohighlight">
+\[
+f(X)=\sum_{j=1}^{p}f_{j}(X_{j}). \]</div>
+</p>
+<p>Where the <span class="math notranslate nohighlight">\(p\)</span> is the number of features. Thus, the additive model consider that the output is the sum of non-linear transformed features. The most noticeable characteristic of additive model is that it did not capture the relationship between features.</p>
 <p>I did not get any useful information in this subsections at all.</p>
 </section>
 </section>
@@ -805,7 +903,7 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
 <p>At here, my understanding is the structured models are the models that can exploit the structure of the data.</p>
 <section id="difficulty-of-the-problem">
 <h3>Difficulty of the Problem<a class="headerlink" href="#difficulty-of-the-problem" title="Permalink to this headline">#</a></h3>
-<p>When we minimize the RSS loss function, there are actually infinite solutions. <span class="math notranslate nohighlight">\(RSS(f)=\sum_{i=}^N(y_i-f(x_i))^2.\)</span> In order to restrict the eligible solutions to RSS, we have to consider the test data. In other words, we want to find a function that can minimize the RSS on the training data and testing data, which natually limited the solutions.</p>
+<p>When we minimize the RSS loss function, there are actually infinite solutions, i.e., <span class="math notranslate nohighlight">\(RSS(f)=\sum_{i=}^N(y_i-f(x_i))^2.\)</span> In order to restrict the eligible solutions to RSS, we have to consider the test data. In other words, we want to find a function that can minimize the RSS on the training data and testing data, which natually limited the solutions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>At the end of this subsection, the author gives an interesting conclusion</p>
@@ -818,6 +916,75 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
 </section>
 <section id="classes-of-restricted-estimators">
 <h2>Classes of Restricted Estimators<a class="headerlink" href="#classes-of-restricted-estimators" title="Permalink to this headline">#</a></h2>
+<p>In this section, the book introduces some restricted estimators, i.e., adding some restriction on the loss function to limit the solutions and improve the generalization on the test data.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text">Section Summary</p>
+</div>
+<div class="sd-card-body docutils">
+<ol class="arabic simple">
+<li><p class="sd-card-text">The most famous way: add regularization term to the loss function. In this book, it is also called <em>penalty</em>. We want the <span class="math notranslate nohighlight">\(f\)</span> to be smooth, i.e., to be a low-order polynomial. I think it is pretty much same as the Okham’s Razor.</p></li>
+<li><p class="sd-card-text">The second way: approximate <span class="math notranslate nohighlight">\(f\)</span> directly by kernel method. In this way, we believe kernel function is a part of <span class="math notranslate nohighlight">\(f\)</span>. KNN can be considered as a special case of kernel method.</p></li>
+<li><p class="sd-card-text">The third way: basis functions and dictionary method (the method automatically choose some basis functions from a large set of them). The NN is the most famous example of this method. Since we have build a profile of the target function <span class="math notranslate nohighlight">\(f\)</span> (as the sum of basis functions), we can also consider this method as a restricted estimator.</p></li>
+</ol>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The book says</p>
+<blockquote>
+<div><p>Each of the classes has associated with it one or more parameters, sometimes appropriately called smoothing parameters, that control the effective size of the local neighborhood.</p>
+</div></blockquote>
+<p>Thus, the smoothing parameter is trying to control size of local neighborhood. But needs to be confirmed by specific examples.</p>
+</div>
+<section id="roughness-penalty-and-bayesian-methods">
+<h3>2.8.1 Roughness Penalty and Bayesian Methods<a class="headerlink" href="#roughness-penalty-and-bayesian-methods" title="Permalink to this headline">#</a></h3>
+<p>Penalized least-squares criterion is defined as:
+<div class="math notranslate nohighlight">
+\[
+\mathrm{PRSS}(f;\lambda)=\sum_{i=1}^{N}(y_{i}-f(x_{i}))^{2}+\lambda\int[f^{\prime\prime}(x)]^{2}d x. 
+\]</div>
+
+and we can see the second term introduces the penality on the complexity of the funcion <span class="math notranslate nohighlight">\(f\)</span> and encourages it to be a low-order polynomial. If <span class="math notranslate nohighlight">\(\lambda=\infty\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> has to be linear function, otherwise the PRSS will be infinite as well.</p>
+<p>In machine learning, the second term is called <em>regularization</em>.</p>
+</section>
+<section id="kernel-methods-and-local-regression">
+<h3>2.8.2 Kernel Methods and Local Regression<a class="headerlink" href="#kernel-methods-and-local-regression" title="Permalink to this headline">#</a></h3>
+<p>In last subsection, we just add a penalty to the <span class="math notranslate nohighlight">\(\hat{f}_\theta\)</span>, which means we try to approximate <span class="math notranslate nohighlight">\(f\)</span> with <span class="math notranslate nohighlight">\(\hat{f}_\theta\)</span>. The penalty is just for limit solutions and increase generalization.</p>
+<p>However, in this subsection, the kernel methods and local regression explictly estimate <span class="math notranslate nohighlight">\(f\)</span> by modifying <span class="math notranslate nohighlight">\(\hat{f}_\theta\)</span>. These two classes seems similar in formula but their ideas are different.</p>
+<p>Given a Gaussian kernel function, <div class="math notranslate nohighlight">
+\[
+K_{\lambda}(x_{0},x)=\frac{1}{\lambda}\exp\left[-\frac{||x-x_{0}||^{2}}{2\lambda}\right],\]</div>
+ the simplest form of kernel estimate is the Nadaraya–Watson weighted average <div class="math notranslate nohighlight">
+\[
+\hat{f}(x_{0})=\frac{\sum_{i=1}^{N}K_{\lambda}(x_{0},x_{i})y_{i}}{\sum_{i=1}^{N}K_{\lambda}(x_{0},x_{i})}. \]</div>
+
+You can see it is just a reweighted voting of all labels, where the weight exponentially decays with the distance from the point <span class="math notranslate nohighlight">\(x_0\)</span>, which is the point we want to predict.</p>
+<p>The book also provides a local regression estimate of <span class="math notranslate nohighlight">\(f(x_0)\)</span> as <span class="math notranslate nohighlight">\(\hat{f}_\theta(x_0)\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> minimizes</p>
+<div class="math notranslate nohighlight" id="equation-eq-local-regression">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-local-regression" title="Permalink to this equation">#</a></span>\[\mathrm{RSS}(f_{\theta},x_{0})=\sum_{i=1}^{N}K_{\lambda}(x_{0},x_{i})(y_{i}-f_{\theta}(x_{i}))^{2}, \]</div>
+<p><strong>However, the book did not tell me how to learn this estimation <span class="math notranslate nohighlight">\(\hat{f}_\theta(x)\)</span>. You can not use the Equation <a class="reference internal" href="#equation-eq-local-regression">(4)</a> as a loss function to minimize since <span class="math notranslate nohighlight">\(x_0\)</span> is your testing data.</strong></p>
+<p>Moreover, KNN can also be considered as a type of kernel method, i.e.,
+<div class="math notranslate nohighlight">
+\[
+K_{k}(x,x_{0})=I(||x-x_{0}||\leq||x_{(k)}-x_{0}||), 
+\]</div>
+</p>
+</section>
+</section>
+<section id="basis-functions-and-dictionary-methods">
+<h2>2.8.3 Basis Functions and Dictionary Methods<a class="headerlink" href="#basis-functions-and-dictionary-methods" title="Permalink to this headline">#</a></h2>
+<p>In this subsection, the book introduces the basis function method. The idea is to approximate <span class="math notranslate nohighlight">\(f\)</span> with a linear combination of basis functions, i.e., <div class="math notranslate nohighlight">
+\[f_{\theta}(x)=\sum_{m=1}^{M}\theta_{m}h_{m}(x), \]</div>
+ where <span class="math notranslate nohighlight">\(h\)</span> is one of the basis function. The radial basis function is a common choice of basis function, where <span class="math notranslate nohighlight">\(h(x)=K_{\lambda_m}(\mu_m,x)=e^{\frac{-|x-\mu|^2}{2\lambda}}\)</span>, a.k.a the Gaussian kernel function.</p>
+<p>A single-layer feed-forward neural network moidel with linear output weigts can be tought of as an adaptive basis function method, i.e., <div class="math notranslate nohighlight">
+\[f_{\theta}(x)=\sum_{m=1}^{M}\beta_{m}\sigma({\alpha_{m}^{T}}x+b_{m}), \]</div>
+ where <span class="math notranslate nohighlight">\(\sigma\)</span> is the sigmoid function. The <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are the parameters of the hidden layer.</p>
+<p>According to chatgpt, the reason that NN is adaptive basis function method is that the <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are learned from the training data. In this case, the radial basis functions with learnable <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> can also be considered as an adaptive basis function method. The statistists create another fancy word for such an adaptive basis function method, i.e., <em>dictionary method</em>. Because they think such a method can automatically select some basis functions from a set of them.</p>
+</section>
+<section id="model-selection-and-the-biasvariance-tradeoff">
+<h2>2.9 Model Selection and the Bias–Variance Tradeoff<a class="headerlink" href="#model-selection-and-the-biasvariance-tradeoff" title="Permalink to this headline">#</a></h2>
+<p>Reading the title, we think this part I am very familiar with, i.e., given multiple models (such as a radial basis functions with different parameters or KNN with different K), how to determine which one is used for inference. The expected prediction error can be decomposed into square of bias + variance + irreducible error.</p>
 </section>
 </section>
 
@@ -855,6 +1022,13 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
           <p class="prev-next-subtitle">previous</p>
           <p class="prev-next-title">C1-Introduction</p>
       </div>
+  </a>
+  <a class='right-next' id="next-link" href="../mit/overview.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">overview</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
   </a>
 </div>
             </footer>
@@ -901,12 +1075,12 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#local-methods-in-high-dimensions">
-   Local Methods in High Dimensions
+   2.5 Local Methods in High Dimensions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#statistical-models-supervised-learning-and-function-approximation">
-   Statistical Models, Supervised Learning and Function Approximation
+   2.6 Statistical Models, Supervised Learning and Function Approximation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -941,6 +1115,28 @@ EPE(f)&amp;=E(|Y-f(x)|)  \\
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classes-of-restricted-estimators">
    Classes of Restricted Estimators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roughness-penalty-and-bayesian-methods">
+     2.8.1 Roughness Penalty and Bayesian Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kernel-methods-and-local-regression">
+     2.8.2 Kernel Methods and Local Regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basis-functions-and-dictionary-methods">
+   2.8.3 Basis Functions and Dictionary Methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-selection-and-the-biasvariance-tradeoff">
+   2.9 Model Selection and the Bias–Variance Tradeoff
   </a>
  </li>
 </ul>
