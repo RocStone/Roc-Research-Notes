@@ -684,8 +684,8 @@ if <span class="math notranslate nohighlight">\(X^TX\)</span> is nonsingular, th
 <p>The book provides two scenarios.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">1</span></code>: The training data in each class were generated from bivariate Gaussian distributions with uncorrelated components and different means.</p>
 <p><code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">understanding</span> <span class="pre">is</span></code>: each data has two features and there are at least two classes in dataset. The two features are generated from a bivariate Gaussian distribution. These two features are uncorrelated thus the componets of these bivariate distributions are uncorrelated. The means of these bivariate distributions for each class are different. Following is the formula of bivariate normal distribution and the code write by chatgpt from above description. You can see the bivariate normal distribution describes the joint distribution of two random variables.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-26fdc14c-9433-41a7-82e8-12009ca8734a">
-<span class="eqno">(1)<a class="headerlink" href="#equation-26fdc14c-9433-41a7-82e8-12009ca8734a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-db1d7da8-3f88-482a-9005-3b89f709e963">
+<span class="eqno">(1)<a class="headerlink" href="#equation-db1d7da8-3f88-482a-9005-3b89f709e963" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(X=x,Y=y)&amp;={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\cdot\\
 &amp;\exp\left[-{\frac{1}{2(1-\rho^{2})}}\left({\frac{(x-\mu_{x})^{2}}{\sigma_{x}^{2}}}+{\frac{(y-\mu_{y})^{2}}{\sigma_{y}^{2}}}-{\frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}}}\right)\right] 
 \end{align}\]</div>
@@ -846,8 +846,8 @@ p(X=x,Y=y)&amp;={\frac{1}{2\pi\sigma_{x}\sigma_{y}{\sqrt{1-\rho^{2}}}}}\cdot\\
 <h2>Statistical Decision Theory<a class="headerlink" href="#statistical-decision-theory" title="Permalink to this headline">#</a></h2>
 <p>The statistical decision theory is trying to choose a decision rule that minimizes a loss function. In another word, after we have a loss function, the theory researchs how to minimize it.</p>
 <p>Firstly, the book introduces the expected prediction error (EPE). The first loss function is the mean square loss. After some derivation, we know the way to minimize this loss function is set the model as <span class="math notranslate nohighlight">\(f(x)=E(Y|X)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d80360a3-2603-47f7-b912-831264ca35ca">
-<span class="eqno">(2)<a class="headerlink" href="#equation-d80360a3-2603-47f7-b912-831264ca35ca" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6b363e3f-00f8-4f2c-9174-5a01f1c99196">
+<span class="eqno">(2)<a class="headerlink" href="#equation-6b363e3f-00f8-4f2c-9174-5a01f1c99196" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(Y-f(x)^2)  \\
 &amp;=\int[y-f(x)]^2 P(dx,dy) \\
 &amp;=E_XE_{Y|X}([Y-f(X)]^2|X) \\
@@ -855,8 +855,8 @@ EPE(f)&amp;=E(Y-f(x)^2)  \\
 \Rightarrow  f(x) &amp; = E(Y|X) \\
 \end{align}\]</div>
 <p>However, we can also use <span class="math notranslate nohighlight">\(L_1\)</span> loss function, in this case</p>
-<div class="amsmath math notranslate nohighlight" id="equation-12fcce2d-423e-4a42-9f75-38dbcc1e9934">
-<span class="eqno">(3)<a class="headerlink" href="#equation-12fcce2d-423e-4a42-9f75-38dbcc1e9934" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f19850e3-a694-4864-a23d-4140939ded6f">
+<span class="eqno">(3)<a class="headerlink" href="#equation-f19850e3-a694-4864-a23d-4140939ded6f" title="Permalink to this equation">#</a></span>\[\begin{align}
 EPE(f)&amp;=E(|Y-f(x)|)  \\
 \Rightarrow  f(x) &amp; = \mathrm{median}(Y|X) \\
 \end{align}\]</div>
