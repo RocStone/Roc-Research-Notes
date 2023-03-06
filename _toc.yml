@@ -12,4 +12,4 @@ parts:
   - caption: MIT 18.065 Matrix Methods In Data Analysis, Signal Processing, And Machine Learning
     chapters:
     - file: mit/overview
-    - file: mit/lecture1-the coulumn space of a contains all vectors Ax.ipynb
+    - file: mit/lecture1.ipynb
