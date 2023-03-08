@@ -651,25 +651,9 @@ title="Print to PDF"
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion1-orthogonal-subspace">
 <h1>Conclusion1: orthogonal subspace<a class="headerlink" href="#conclusion1-orthogonal-subspace" title="Permalink to this headline">#</a></h1>
 <p>All the vectors in two different orthogonal subspaces are orthogonal to each other. Especially, the row space is orthogonal to null space.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l3-nullspace.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<img alt="../_images/a1ce86a3ef9bebe65e5026bda596715eae047df65711a2b7e2876bc52da59288.png" src="../_images/a1ce86a3ef9bebe65e5026bda596715eae047df65711a2b7e2876bc52da59288.png" />
-</div>
-</div>
-<p><img alt="" src="../_images/l3-nullspace.png" /></p>
-<p>We can find a fact that the vector <span class="math notranslate nohighlight">\(x\)</span> is orthogonal to every row of the matrix <span class="math notranslate nohighlight">\(A\)</span>. Since the rows of the matrix forms the row space, and the columns of <span class="math notranslate nohighlight">\(x\)</span> forms the null space. Thus, we know the row space is orthogonal to the null space.</p>
+<div class="math notranslate nohighlight">
+\[Ax=0\Longrightarrow A_{i\cdot}\cdot x=0, \forall i\in\{1...n\}\]</div>
+<p>We can find a fact that the vector <span class="math notranslate nohighlight">\(x\)</span> is orthogonal to every row of the matrix <span class="math notranslate nohighlight">\(A\)</span>. Since the rows of the matrix forms the row space, and the columns of <span class="math notranslate nohighlight">\(x\)</span> forms the null space (in fact, we define all of the <span class="math notranslate nohighlight">\(x\)</span> statisfies this equation forms a null space). Thus, we know the row space is orthogonal to the null space.</p>
 <p>Now, we have another interesting intuition about the <span class="math notranslate nohighlight">\(Ax=0\)</span>. If the <span class="math notranslate nohighlight">\(A\)</span> is full rank, which means all of the rows are independent, assuming there are <span class="math notranslate nohighlight">\(m\)</span> rows, <span class="math notranslate nohighlight">\(n\)</span> columns, and <span class="math notranslate nohighlight">\(m\leq n\)</span>, then we can not find a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span> that is perpendicular to the row space (since it full of the space <span class="math notranslate nohighlight">\(\mathbb{R}^m\)</span>). Thus, the number of independent vectors of <span class="math notranslate nohighlight">\(x\)</span> that satisfies the equation equals to the <span class="math notranslate nohighlight">\(m-rank(A)\)</span></p>
 <section id="understanding-some-geometric-meaning-of-matrix">
 <h2>Understanding some geometric meaning of matrix<a class="headerlink" href="#understanding-some-geometric-meaning-of-matrix" title="Permalink to this headline">#</a></h2>
@@ -700,7 +684,7 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l3-m2.png&#39;</span><span class="p">,</span> <span class="n">retina</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l3-m2.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

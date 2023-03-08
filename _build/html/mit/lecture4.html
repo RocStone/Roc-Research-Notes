@@ -250,6 +250,10 @@ const thebe_selector_output = ".output, .cell_output"
   
 
   
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
 
 </div>
   </nav>
@@ -471,6 +475,16 @@ const thebe_selector_output = ".output, .cell_output"
         </label>
     </div>
     <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="btn btn-sm"
   data-toggle="tooltip"
@@ -565,7 +579,9 @@ title="Print to PDF"
       
   </ul>
 </div>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
             </div>
@@ -578,6 +594,44 @@ title="Print to PDF"
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-properties-of-eigenvectors">
+   Four properties of eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-more-conlusions-about-eigenvectors">
+   Four more conlusions about eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion3-similar-matrices-have-the-same-eigenvalues">
+   Conclusion3: similar matrices have the same eigenvalues
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion4-the-diagonal-of-the-triangular-matrix-is-the-eigenvalues">
+   Conclusion4: the diagonal of the triangular matrix is the eigenvalues
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion5-diagonalization-can-fasten-the-computation-of-power">
+   Conclusion5: diagonalization can fasten the computation of power
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-the-introduction-of-multiplicity">
+   For the introduction of Multiplicity
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -593,6 +647,130 @@ title="Print to PDF"
 \[\begin{split}Av=AXc=\Lambda Xc \\\Longrightarrow A^kv=A^kXc=\Lambda^k Xc\end{split}\]</div>
 </p>
 </div>
+<section id="four-properties-of-eigenvectors">
+<h2>Four properties of eigenvectors<a class="headerlink" href="#four-properties-of-eigenvectors" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l4-m1.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/7aa357d83a8351101df9a6550fec8b5a9b83761f0c57627625a97f5b9028adbb.png" src="../_images/7aa357d83a8351101df9a6550fec8b5a9b83761f0c57627625a97f5b9028adbb.png" />
+</div>
+</div>
+<p>For the determinant party, recall the definition of the determinant of a matrix <span class="math notranslate nohighlight">\(A\)</span>, I will just show you a beautiful picture from 3blue1brown.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l4-m2.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/564e70ef0e9014ac5b3b8968618be20c0b62c3c8affc47e0efe221c3d5c7b097.png" src="../_images/564e70ef0e9014ac5b3b8968618be20c0b62c3c8affc47e0efe221c3d5c7b097.png" />
+</div>
+</div>
+</section>
+<section id="four-more-conlusions-about-eigenvectors">
+<h2>Four more conlusions about eigenvectors<a class="headerlink" href="#four-more-conlusions-about-eigenvectors" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l4-m3.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b3fb1e6a297d57c5ac2b65d84b610aa1237fa51db7268b394225ae07a54bd710.png" src="../_images/b3fb1e6a297d57c5ac2b65d84b610aa1237fa51db7268b394225ae07a54bd710.png" />
+</div>
+</div>
+<p>The last one tells us an important fact that only the real symmetric matrix has orthogonal eigenvectors. In fact, I am not sure that in what kind of case that a asymmetric matrix <span class="math notranslate nohighlight">\(A\)</span> also satisfies the <span class="math notranslate nohighlight">\(A^TA=AA^T\)</span>.</p>
+</section>
+<section id="conclusion3-similar-matrices-have-the-same-eigenvalues">
+<h2>Conclusion3: similar matrices have the same eigenvalues<a class="headerlink" href="#conclusion3-similar-matrices-have-the-same-eigenvalues" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l4-m4.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/3352d627b52c7f1534a78f3835a2559f6bfd15256c2a32d7d38bc683e870d338.png" src="../_images/3352d627b52c7f1534a78f3835a2559f6bfd15256c2a32d7d38bc683e870d338.png" />
+</div>
+</div>
+</section>
+<section id="conclusion4-the-diagonal-of-the-triangular-matrix-is-the-eigenvalues">
+<h2>Conclusion4: the diagonal of the triangular matrix is the eigenvalues<a class="headerlink" href="#conclusion4-the-diagonal-of-the-triangular-matrix-is-the-eigenvalues" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l4-m5.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/799d054517170de75b7afcbc0a0562b0b987cd30644d1cb96cfa4d881c538c7b.png" src="../_images/799d054517170de75b7afcbc0a0562b0b987cd30644d1cb96cfa4d881c538c7b.png" />
+</div>
+</div>
+</section>
+<section id="conclusion5-diagonalization-can-fasten-the-computation-of-power">
+<h2>Conclusion5: diagonalization can fasten the computation of power<a class="headerlink" href="#conclusion5-diagonalization-can-fasten-the-computation-of-power" title="Permalink to this headline">#</a></h2>
+<p>Assume a matrix <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(n\)</span> independent eigenvectors. Then, we can diagomialize it as <span class="math notranslate nohighlight">\(A=X\Lambda X^{-1}\)</span>. Thus, <div class="math notranslate nohighlight">
+\[A^k=(X\Lambda X^{-1})...(X\Lambda X^{-1})=X\Lambda^k X^{-1}\]</div>
+</p>
+<p>Conclusion6: markov matrix will be stable after a long time</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;imgs/l4-m6.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/4c3d653b2ef6ff0ed55765cbcca3804f59d4df61710645da9a66bb2f0190932d.png" src="../_images/4c3d653b2ef6ff0ed55765cbcca3804f59d4df61710645da9a66bb2f0190932d.png" />
+</div>
+</div>
+</section>
+<section id="for-the-introduction-of-multiplicity">
+<h2>For the introduction of Multiplicity<a class="headerlink" href="#for-the-introduction-of-multiplicity" title="Permalink to this headline">#</a></h2>
+<p>Refer to the Section 1.6 of the book.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -643,6 +821,52 @@ title="Print to PDF"
           </div>
           
           
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-properties-of-eigenvectors">
+   Four properties of eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#four-more-conlusions-about-eigenvectors">
+   Four more conlusions about eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion3-similar-matrices-have-the-same-eigenvalues">
+   Conclusion3: similar matrices have the same eigenvalues
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion4-the-diagonal-of-the-triangular-matrix-is-the-eigenvalues">
+   Conclusion4: the diagonal of the triangular matrix is the eigenvalues
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion5-diagonalization-can-fasten-the-computation-of-power">
+   Conclusion5: diagonalization can fasten the computation of power
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-the-introduction-of-multiplicity">
+   For the introduction of Multiplicity
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
           
           
         </div>
