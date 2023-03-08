@@ -15,5 +15,7 @@ parts:
     - file: mit/lecture1.ipynb
     - file: mit/lecture2.ipynb
     - file: mit/lecture3.ipynb
+    - file: mit/lecture4.ipynb
   - caption: Life Exp
+    chapters:
     - file: life/overview
