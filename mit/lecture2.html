@@ -62,6 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'mit/lecture2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="L3: Orthogonal Matrices" href="lecture3.html" />
     <link rel="prev" title="L1: The coulumn space of A" href="lecture1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="None">
@@ -179,6 +180,27 @@ const thebe_selector_output = ".output, .cell_output"
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="#">
                         L2: Multiplying and Factoring
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture3.html">
+                        L3: Orthogonal Matrices
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture4.html">
+                        L4: Eigenvectors and Eigenvalues
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../life/overview.html">
+                        Important life experience summary
                       </a>
                     </li>
                 
@@ -301,6 +323,27 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture3.html">
+                        L3: Orthogonal Matrices
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture4.html">
+                        L4: Eigenvectors and Eigenvalues
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../life/overview.html">
+                        Important life experience summary
+                      </a>
+                    </li>
+                
                 </div>
             </div>
             
@@ -385,6 +428,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="overview.html">L0: Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">L1: The coulumn space of A</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">L2: Multiplying and Factoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture3.html">L3: Orthogonal Matrices</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lecture4.html">L4: Eigenvectors and Eigenvalues</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Life Exp</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../life/overview.html">Important life experience summary</a></li>
+
 </ul>
 
     </div>
@@ -549,6 +600,16 @@ title="Print to PDF"
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eigenvectors">
+   Eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-math-trick-for-eigenvectors">
+   Some math trick for eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion-1">
    Conclusion 1
   </a>
@@ -564,13 +625,24 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eigenvectors">
-   Eigenvectors
+  <a class="reference internal nav-link" href="#reason-the-factorization-holds">
+   Reason the factorization holds
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#some-math-trick-for-eigenvectors">
-   Some math trick for eigenvectors
+  <a class="reference internal nav-link" href="#columns-space-of-ab-is-leq-column-space-of-a">
+   Columns space of
+   <span class="math notranslate nohighlight">
+    \(AB\)
+   </span>
+   is
+   <span class="math notranslate nohighlight">
+    \(\leq\)
+   </span>
+   column space of
+   <span class="math notranslate nohighlight">
+    \(A\)
+   </span>
   </a>
  </li>
 </ul>
@@ -584,6 +656,48 @@ title="Print to PDF"
               
   <section class="tex2jax_ignore mathjax_ignore" id="l2-multiplying-and-factoring">
 <h1>L2: Multiplying and Factoring<a class="headerlink" href="#l2-multiplying-and-factoring" title="Permalink to this headline">#</a></h1>
+<section id="eigenvectors">
+<h2>Eigenvectors<a class="headerlink" href="#eigenvectors" title="Permalink to this headline">#</a></h2>
+<p>Eigenvectors are vectors that do not change direction when you change the basis by a matrix <span class="math notranslate nohighlight">\(A\)</span>. Following is an animation example.</p>
+<p>Thus, it’s easy to understand that the eigenvalues are the scale factors of the eigenvectors. In following case, the vector <span class="math notranslate nohighlight">\([-1\ 1]^T\)</span> has been stretched into two times of its original length. So the eigenvelue is <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./imgs/l2-eigenvector.gif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/52e71921a0124e459b97b8332dc229197f418ecee7fd7e308cc9de91a972286f.gif" src="../_images/52e71921a0124e459b97b8332dc229197f418ecee7fd7e308cc9de91a972286f.gif" />
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Thus, the eigenvectors capture the esstenial information of the matrix <span class="math notranslate nohighlight">\(A\)</span>, i.e., capture the unchanged direction of the matrix <span class="math notranslate nohighlight">\(A\)</span>. Now let’s look at the famous equation <span class="math notranslate nohighlight">\(Av=\lambda v\)</span> where <span class="math notranslate nohighlight">\(v\)</span> is the eigenvector of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> is the eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Why does this equation hold? Recall the multilpication of <span class="math notranslate nohighlight">\(Av\)</span> indicates we have a vector <span class="math notranslate nohighlight">\(v\)</span> in our coordinate system and we translate it into Jeniffer’s coordinate system with <span class="math notranslate nohighlight">\(A\)</span>. Since the eigenvector <span class="math notranslate nohighlight">\(v\)</span> does not change its direction and only scale its length, the result of <span class="math notranslate nohighlight">\(Av\)</span> equals to scale <span class="math notranslate nohighlight">\(v\)</span> with <span class="math notranslate nohighlight">\(\lambda\)</span>. Thus, the equation <span class="math notranslate nohighlight">\(Av=\lambda v\)</span> holds.</p>
+</div>
+</section>
+<section id="some-math-trick-for-eigenvectors">
+<h2>Some math trick for eigenvectors<a class="headerlink" href="#some-math-trick-for-eigenvectors" title="Permalink to this headline">#</a></h2>
+<div class="math notranslate nohighlight">
+\[Av=\lambda v\]</div>
+<div class="math notranslate nohighlight">
+\[Av-\lambda Iv=0\]</div>
+<div class="math notranslate nohighlight">
+\[(A-\lambda I)v=0\]</div>
+<p>Since we that if the product of a matrix and a vector is zero, either the vector is zero or the columns of the matrix is not totoally independent. Which means the matrix is not full rank. Thus, the <span class="math notranslate nohighlight">\(det(A-\lambda I)=0\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Eigenvector may not exist. This can be understand in two ways: 1) when you rorate the coordinate system, all of the vector has been changed its direction. Thus, no eigenvector. 2) When <span class="math notranslate nohighlight">\(det(A-\lambda I)\neq0,\forall \lambda\)</span>, then <span class="math notranslate nohighlight">\(v\)</span> must be zero vector. When eigenvector does not exist, either does the eigenvalue.</p></li>
+<li><p>One eigenvalue may correspond to multiple eigenvectors. Imagine you just zoom in the coordinate system by 2 times. Then the eigenvalue is 2 but the corresponding eigenvector is the vectors on both axises.</p></li>
+<li><p>Another famous equation called digonalization: <span class="math notranslate nohighlight">\(X^{-1}AX=\Lambda\)</span> where columns of <span class="math notranslate nohighlight">\(X\)</span> is the eigenvectors of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix whose diagonal elements are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. Why it holds? Firstly, we have <span class="math notranslate nohighlight">\(AX=\lambda X\)</span> according to the definition of eigenvector. Then we have <span class="math notranslate nohighlight">\(X^{-1}AX=X^{-1}\lambda X=\lambda I=\Lambda\)</span>. If you leave <span class="math notranslate nohighlight">\(A\)</span> on the left, you will have <span class="math notranslate nohighlight">\(A=X\Lambda X\)</span> which is exactly the <span class="math notranslate nohighlight">\(4\)</span>-th equation introducted above in the book.</p></li>
+</ol>
+</section>
 <section id="conclusion-1">
 <h2>Conclusion 1<a class="headerlink" href="#conclusion-1" title="Permalink to this headline">#</a></h2>
 <p>The multiplication of two matrices can be considered as <span class="math notranslate nohighlight">\(n\)</span> columns vectors multiplies <span class="math notranslate nohighlight">\(n\)</span> row vectors.</p>
@@ -635,47 +749,15 @@ title="Print to PDF"
 <p>So, when we look at some thing like <span class="math notranslate nohighlight">\(M^{-1}AM\)</span>, we know it is trying to do a transformation in Jeniffer’s coordinate system, but the transformation <span class="math notranslate nohighlight">\(A\)</span> is described in our sysmtem.</p>
 </div>
 </section>
-<section id="eigenvectors">
-<h2>Eigenvectors<a class="headerlink" href="#eigenvectors" title="Permalink to this headline">#</a></h2>
-<p>Eigenvectors are vectors that do not change direction when you change the basis by a matrix <span class="math notranslate nohighlight">\(A\)</span>. Following is an animation example.</p>
-<p>Thus, it’s easy to understand that the eigenvalues are the scale factors of the eigenvectors. In following case, the vector <span class="math notranslate nohighlight">\([-1\ 1]^T\)</span> has been stretched into two times of its original length. So the eigenvelue is <span class="math notranslate nohighlight">\(2\)</span>.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s1">&#39;./imgs/l2-eigenvector.gif&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<img alt="../_images/52e71921a0124e459b97b8332dc229197f418ecee7fd7e308cc9de91a972286f.gif" src="../_images/52e71921a0124e459b97b8332dc229197f418ecee7fd7e308cc9de91a972286f.gif" />
-</div>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Thus, the eigenvectors capture the esstenial information of the matrix <span class="math notranslate nohighlight">\(A\)</span>, i.e., capture the unchanged direction of the matrix <span class="math notranslate nohighlight">\(A\)</span>. Now let’s look at the famous equation <span class="math notranslate nohighlight">\(Av=\lambda v\)</span> where <span class="math notranslate nohighlight">\(v\)</span> is the eigenvector of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> is the eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<p>Why does this equation hold? Recall the multilpication of <span class="math notranslate nohighlight">\(Av\)</span> indicates we have a vector <span class="math notranslate nohighlight">\(v\)</span> in our coordinate system and we translate it into Jeniffer’s coordinate system with <span class="math notranslate nohighlight">\(A\)</span>. Since the eigenvector <span class="math notranslate nohighlight">\(v\)</span> does not change its direction and only scale its length, the result of <span class="math notranslate nohighlight">\(Av\)</span> equals to scale <span class="math notranslate nohighlight">\(v\)</span> with <span class="math notranslate nohighlight">\(\lambda\)</span>. Thus, the equation <span class="math notranslate nohighlight">\(Av=\lambda v\)</span> holds.</p>
-</div>
+<section id="reason-the-factorization-holds">
+<h2>Reason the factorization holds<a class="headerlink" href="#reason-the-factorization-holds" title="Permalink to this headline">#</a></h2>
+<p>For equation 4, as I explained before, <span class="math notranslate nohighlight">\(AX=X\Lambda\rightarrow A=X\Lambda X^{-1}\)</span>, as long as <span class="math notranslate nohighlight">\(A\)</span> is a <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> matrix with <span class="math notranslate nohighlight">\(n\)</span> independent columns.</p>
+<p>In case the matrix <span class="math notranslate nohighlight">\(A\)</span> meets some special conditions, i.e., it is not only a square matrix with <span class="math notranslate nohighlight">\(n\)</span> independent columns, but also a symmetric matrix, the eigenvectors will be orthogonal to each other. This can be proved easily but I don’t know why it holds geometically.</p>
+<p>Moreover, if you normalize the length of eigenvectors to 1, then we have <span class="math notranslate nohighlight">\(XX^T=I\rightarrow X^T=X^{-1}\)</span>. Now we have the equation 3, i.e., <span class="math notranslate nohighlight">\(A=X\Lambda X^{-1}\rightarrow A=X\Lambda X^{T}\)</span>. The pros of this equation is that once we get the normalized eigenvectors, we avoide the trouble of computing its inverse matrix.</p>
 </section>
-<section id="some-math-trick-for-eigenvectors">
-<h2>Some math trick for eigenvectors<a class="headerlink" href="#some-math-trick-for-eigenvectors" title="Permalink to this headline">#</a></h2>
-<div class="math notranslate nohighlight">
-\[Av=\lambda v\]</div>
-<div class="math notranslate nohighlight">
-\[Av-\lambda Iv=0\]</div>
-<div class="math notranslate nohighlight">
-\[(A-\lambda I)v=0\]</div>
-<p>Since we that if the product of a matrix and a vector is zero, either the vector is zero or the columns of the matrix is not totoally independent. Which means the matrix is not full rank. Thus, the <span class="math notranslate nohighlight">\(det(A-\lambda I)=0\)</span>.</p>
-<ol class="arabic simple">
-<li><p>Eigenvector may not exist. This can be understand in two ways: 1) when you rorate the coordinate system, all of the vector has been changed its direction. Thus, no eigenvector. 2) When <span class="math notranslate nohighlight">\(det(A-\lambda I)\neq0,\forall \lambda\)</span>, then <span class="math notranslate nohighlight">\(v\)</span> must be zero vector. When eigenvector does not exist, either does the eigenvalue.</p></li>
-<li><p>One eigenvalue may correspond to multiple eigenvectors. Imagine you just zoom in the coordinate system by 2 times. Then the eigenvalue is 2 but the corresponding eigenvector is the vectors on both axises.</p></li>
-<li><p>Another famous equation called digonalization: <span class="math notranslate nohighlight">\(X^{-1}AX=\Lambda\)</span> where columns of <span class="math notranslate nohighlight">\(X\)</span> is the eigenvectors of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(\Lambda\)</span> is the diagonal matrix whose diagonal elements are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>. Why it holds? Firstly, we have <span class="math notranslate nohighlight">\(AX=\lambda X\)</span> according to the definition of eigenvector. Then we have <span class="math notranslate nohighlight">\(X^{-1}AX=X^{-1}\lambda X=\lambda I=\Lambda\)</span>. If you leave <span class="math notranslate nohighlight">\(A\)</span> on the left, you will have <span class="math notranslate nohighlight">\(A=X\Lambda X\)</span> which is exactly the <span class="math notranslate nohighlight">\(4\)</span>-th equation introducted above in the book.</p></li>
-</ol>
+<section id="columns-space-of-ab-is-leq-column-space-of-a">
+<h2>Columns space of <span class="math notranslate nohighlight">\(AB\)</span> is <span class="math notranslate nohighlight">\(\leq\)</span> column space of <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#columns-space-of-ab-is-leq-column-space-of-a" title="Permalink to this headline">#</a></h2>
+<p>Columns space of <span class="math notranslate nohighlight">\(A\)</span> is spaned by the independent columns in <span class="math notranslate nohighlight">\(A\)</span>. The multiplication of <span class="math notranslate nohighlight">\(AB\)</span> is just a linear combination of these independent columns, which will not <em>create</em> new independent columns. Thus, the column space of <span class="math notranslate nohighlight">\(AB\)</span> is same or smaller than the column space of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </section>
 </section>
 
@@ -714,6 +796,13 @@ title="Print to PDF"
           <p class="prev-next-title">L1: The coulumn space of A</p>
       </div>
   </a>
+  <a class='right-next' id="next-link" href="lecture3.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">L3: Orthogonal Matrices</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
 </div>
             </footer>
             
@@ -731,6 +820,16 @@ title="Print to PDF"
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eigenvectors">
+   Eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-math-trick-for-eigenvectors">
+   Some math trick for eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion-1">
    Conclusion 1
   </a>
@@ -746,13 +845,24 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eigenvectors">
-   Eigenvectors
+  <a class="reference internal nav-link" href="#reason-the-factorization-holds">
+   Reason the factorization holds
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#some-math-trick-for-eigenvectors">
-   Some math trick for eigenvectors
+  <a class="reference internal nav-link" href="#columns-space-of-ab-is-leq-column-space-of-a">
+   Columns space of
+   <span class="math notranslate nohighlight">
+    \(AB\)
+   </span>
+   is
+   <span class="math notranslate nohighlight">
+    \(\leq\)
+   </span>
+   column space of
+   <span class="math notranslate nohighlight">
+    \(A\)
+   </span>
   </a>
  </li>
 </ul>

@@ -2,7 +2,7 @@
 A good book to learn statistic.
 I will write the main idea of this book in the future.
 
-# Outline of the book and what I should pay attention to
+# Outline of the book
 1. Introduction **fast get main idea**
 2. Overview of Supervised Learning **fast get main idea**
 3. Linear Methods for Regression **familar**
